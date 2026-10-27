@@ -26,11 +26,8 @@
 5. [Application Workflow](#application-workflow)
 6. [Folder Structure](#folder-structure)
 7. [Getting Started](#getting-started)
-8. [Supabase Setup](#supabase-setup)
-9. [Environment Variables](#environment-variables)
-10. [Deployment](#deployment)
-11. [UN SDG Alignment](#un-sdg-alignment)
-12. [Contributing](#contributing)
+8. [Environment Variables](#environment-variables)
+9. [UN SDG Alignment](#un-sdg-alignment)
 
 ---
 
@@ -241,51 +238,6 @@ cp .env.example .env.local
 # Fill in VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
 npm run dev
 ```
-
----
-
-## Supabase Setup
-
-### Step 1 — Create a Project
-
-1. Go to [supabase.com](https://supabase.com) → **New Project**
-2. Choose a region close to you (e.g., Singapore `ap-southeast-1`)
-3. Wait ~2 minutes for provisioning
-
-### Step 2 — Run the Schema
-
-1. Dashboard → **SQL Editor** → **New query**
-2. Paste the full contents of [`supabase/schema.sql`](supabase/schema.sql)
-3. Click **Run**
-
-This creates all tables, RLS policies, the profile auto-creation trigger, and the private `papers` storage bucket.
-
-### Step 3 — Seed Your Data
-
-Run this in the SQL Editor to add your real subjects:
-
-```sql
-INSERT INTO subjects (code, name, branch, semester) VALUES
-  ('AIML501', 'Design & Analysis of Algorithms',  'AI&DS', 5),
-  ('AIML502', 'Software Engineering',              'AI&DS', 5),
-  ('AIML503', 'Database Management Systems',       'AI&DS', 5),
-  ('AIML504', 'Machine Learning',                  'AI&DS', 5),
-  ('AIML505', 'Computer Networks',                 'AI&DS', 5),
-  ('AIML506', 'Web Technologies',                  'AI&DS', 5)
-ON CONFLICT (code, branch, semester) DO NOTHING;
-```
-
-### Step 4 — (Optional) Scrape Papers from College Website
-
-```bash
-SUPABASE_URL=https://xxxx.supabase.co \
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key \
-COLLEGE_PAPERS_URL=https://your-college.edu/papers \
-npm run scrape
-```
-
-> ⚠️ Check your college website's terms of use before running the scraper. Use the service-role key **only locally** — never commit it or expose it as a `VITE_` variable.
-
 ### Step 5 — Configure Authentication
 
 1. Dashboard → **Authentication** → **URL Configuration**
@@ -304,25 +256,6 @@ npm run scrape
 | `VITE_ALLOWED_EMAIL_DOMAIN` | No | Restricts sign-up to a college domain e.g. `college.edu.in` |
 
 > Copy `.env.example` → `.env.local`. The `.env.local` file is git-ignored by default.
-
----
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push the `examwise/` folder to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com) → **New Project** → import your repo.
-3. Vercel auto-detects Vite. Set the **Root Directory** to `examwise` if needed.
-4. Add environment variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and optionally `VITE_ALLOWED_EMAIL_DOMAIN`.
-5. Deploy, then paste the live URL into Supabase → Authentication → Site URL.
-
-### Netlify
-
-A [`netlify.toml`](netlify.toml) is included. The same environment variables apply.
-
----
-
 ## UN SDG Alignment
 
 ExamWise AI contributes to four United Nations Sustainable Development Goals:
@@ -381,28 +314,6 @@ The Community Contributions module fosters a collaborative knowledge ecosystem. 
 | **10** | Reduced Inequalities | Removes information asymmetry between student cohorts |
 | **9** | Industry & Innovation | Scalable open-source edtech infrastructure blueprint |
 | **17** | Partnerships | Community-contributed, peer-verified academic knowledge base |
-
-</div>
-
----
-
-## Contributing
-
-Contributions are welcome! To contribute:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature-name`
-3. Commit your changes: `git commit -m 'feat: add your feature'`
-4. Push to the branch: `git push origin feature/your-feature-name`
-5. Open a Pull Request
-
-Please ensure your changes work in both demo mode and Supabase-connected mode.
-
----
-
-<div align="center">
-
-Built with ❤️ for engineering students · ExamWise AI © 2026
 
 *Study smarter. Prepare with confidence.*
 
