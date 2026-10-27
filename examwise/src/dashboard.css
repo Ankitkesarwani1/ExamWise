@@ -1,0 +1,235 @@
+.dashboard-page {
+  padding-top: 24px;
+}
+
+.dashboard-page .welcome {
+  margin-bottom: 16px;
+}
+
+.dashboard-page .welcome h1 {
+  font-size: 26px;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
+.dashboard-page .hero-search {
+  height: 50px;
+  border-radius: 11px;
+  box-shadow: 0 3px 12px rgba(36, 59, 100, 0.04);
+}
+
+.dashboard-page .quick {
+  margin: 11px 0 18px;
+  gap: 8px;
+}
+
+.dashboard-page .metric {
+  padding: 13px 14px;
+  min-height: 70px;
+}
+
+.dashboard-page .section-head {
+  margin-top: 21px;
+  margin-bottom: 10px;
+}
+
+.dashboard-page .subject-card {
+  padding: 13px 14px;
+  gap: 9px 11px;
+  box-shadow: 0 1px 2px rgba(23, 32, 51, 0.025), 0 5px 15px rgba(36, 59, 100, 0.025);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.dashboard-page .subject-card:hover {
+  border-color: #bdc9df;
+  box-shadow: 0 8px 20px rgba(36, 59, 100, 0.07);
+  transform: translateY(-1px);
+}
+
+.dashboard-page .subject-title h3 {
+  line-height: 1.35;
+  min-height: 32px;
+}
+
+.dashboard-page .dashboard-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(330px, 1fr);
+  margin-top: 14px;
+}
+
+.dashboard-page .dashboard-grid > .card {
+  padding: 16px 18px;
+}
+
+.dashboard-page .dashboard-grid .section-head {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.dashboard-page .bar-chart {
+  gap: 10px;
+}
+
+.dashboard-page .bar-row i {
+  background: #4169e1;
+}
+
+.dashboard-page .task {
+  padding: 9px 2px;
+}
+
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.75fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.dashboard-bottom .papers-card {
+  margin-top: 0;
+  min-width: 0;
+  padding: 16px 18px;
+}
+
+.dashboard-bottom .section-head {
+  margin-top: 0;
+  margin-bottom: 13px;
+}
+
+.dashboard-bottom .paper-row {
+  grid-template-columns: auto minmax(170px, 2fr) repeat(3, minmax(54px, 0.7fr)) auto auto;
+  padding: 9px 3px;
+}
+
+.dashboard-bottom .paper-row > span:nth-of-type(3) {
+  display: none;
+}
+
+.recommendations {
+  padding: 16px 18px;
+}
+
+.ai-mark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #7c6ae6;
+  background: #f0edff;
+}
+
+.recommendation-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  color: #172033;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid #eaf0f6;
+  text-align: left;
+}
+
+.recommendation-row:hover b {
+  color: #4169e1;
+}
+
+.recommendation-row > span:nth-child(2) {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendation-row b {
+  font-size: 10px;
+  transition: color 160ms ease;
+}
+
+.recommendation-row small {
+  margin-top: 3px;
+  overflow: hidden;
+  color: #64748b;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recommendation-icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #7c6ae6;
+  background: #f0edff;
+}
+
+.recommendation-icon.r1 {
+  color: #b8750d;
+  background: #fff5dd;
+}
+
+.recommendation-icon.r2 {
+  color: #4169e1;
+  background: #edf2ff;
+}
+
+.recommendation-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: #6959c8;
+  background: #f7f5ff;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.recommendation-note svg {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 1180px) {
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 14px;
+  }
+
+  .recommendations .section-head,
+  .recommendation-note {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1050px) {
+  .dashboard-page .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-page {
+    padding-top: 20px;
+  }
+
+  .dashboard-page .subject-title h3 {
+    min-height: auto;
+  }
+
+  .dashboard-bottom .paper-row {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .recommendations {
+    display: block;
+  }
+}
